@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Coeur (position absolute)</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+        
+        .coeur {
+           position:absolute; 
+            
+            /*animation:1s infinite alternate pulsation_coeur;*/
+            animation:1s infinite pulsation_coeur_complexe; 
+        }
+        
+        .carre {
+            position:absolute;
+            /*position:relative;*/
+            width:100px;
+            height:100px;
+            background-color:crimson;
+            
+            /* Pour ré-équilibrer le centrage par rapport au parent*/
+            margin-left:-50px; margin-top:-50px;
+            
+            transform:rotate(45deg);
+            
+
+        }
+        
+        .rond {
+            position:absolute;
+            background-color:crimson;
+            border-radius:50%;
+            width:100%;
+            height:100%;
+        }
+        
+        .carre .rond:nth-child(1) {
+            left:-50%; /* ou right:50%;*/
+        }
+        
+        .carre .rond:nth-child(2) {
+            top:-50%; /* ou bottom:50%;*/
+        }
+        
+        
+        #coeur1 {
+            top:50%; left:50%;
+        }
+        
+        #coeur2 {
+            top:33%; left:80%; 
+        }
+        
+        #coeur2 .carre {
+            transform:scale(0.7) rotate(45deg);
+            /* Note :
+                - On peut combiner plusieurs transformations en une règle
+                - Ici on doit rappeler "rotate(45deg)" sinon notre nouvelle transformation annulera celle qui est faite dans les règles de la classe .carre (voir plus haut)
+            */
+        }
+        
+        #coeur3 {
+           top:80%; left:33%; 
+        }
+        
+        /* Définir l'animation */
+        
+        @keyframes pulsation_coeur {
+            
+            from {
+                transform:scale(1);
+            }
+            
+            to {
+                transform:scale(1.5);
+            }
+            
+        }
+        
+        @keyframes pulsation_coeur_complexe {
+            
+            0% {
+                transform:scale(1);
+            }
+            
+            25% {
+               transform:scale(1.3); 
+            }
+            
+            37% {
+              transform:scale(1);  
+            }
+            
+            50% {
+                transform:scale(1.2);
+            }
+            
+            100% {
+                transform:scale(1);
+            }
+            
+        }
+    
+    </style>
+</head>
+
+<body>
+    
+    <div id = "coeur1" class = "coeur">
+        <div class = "carre">
+    
+            <div class = "rond"></div>
+            <div class = "rond"></div>
+        
+        </div>
+    </div>
+    
+    <div id = "coeur2" class = "coeur">
+        <div class = "carre">
+    
+            <div class = "rond"></div>
+            <div class = "rond"></div>
+        
+        </div>
+    </div>
+    
+    <div id = "coeur3" class = "coeur">
+        <div class = "carre">
+    
+            <div class = "rond"></div>
+            <div class = "rond"></div>
+        
+        </div>
+    </div>
+    
+
+
+</body>
+
+</html>
